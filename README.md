@@ -25,6 +25,8 @@ filtering:--
         ))}
         `}
 Q.3->Order Volume cell is displaying USD values, can you please make it display the currency value selected on the dropdown located in the header of the dashboard
+
+
 soluion:-in this problem we have to display the currency according to dropdown option
 so here is the my strategy to solve this problem :-
 by using usestate hooks to manage the current and set cuurentstate and with help of map in table calling the cuurency data from data.json and disaplying on the table to update the selected currency from the dropdown 
