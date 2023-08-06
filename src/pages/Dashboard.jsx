@@ -9,11 +9,10 @@ import Card from "../component/card/Card";
 import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
-  const [searchText, setSearchText] = useState("");
-  const [selectedOrderDetails, setSelectedOrderDetails] = useState({});
-  const [selectedOrderTimeStamps, setSelectedOrderTimeStamps] = useState({});
-
+  const [picked_Currency, set_Currency] = useState("USD");
+  const [search_data, set_Search_data] = useState("");
+  const [choose_OrderDetails, setchoose_OrderDetails] = useState({});
+  const [order_TimeStamps, setorder_TimeStamps] = useState({});
   const handleOrderDetails = (selectedId) => {
     const selectedDetails = mockData.results.find((order) => {
       return order["&id"] === selectedId;
@@ -23,9 +22,10 @@ const Dashboard = () => {
       return timestamp["&id"] === selectedId;
     });
 
-    setSelectedOrderDetails(selectedDetails);
-    setSelectedOrderTimeStamps(selectedTimeStamp);
+    setchoose_OrderDetails(selectedDetails);
+    setorder_TimeStamps(selectedTimeStamp);
   };
+
   return (
     <div>
       <div className={styles.header}>
@@ -35,35 +35,35 @@ const Dashboard = () => {
         />
         <div className={styles.actionBox}>
           <Search
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            value={search_data}
+            onChange={(e) => set_Search_data(e.target.value)}
           />
           <Dropdown
             options={["GBP", "USD", "JPY", "EUR"]}
-            onChange={(e) => setSelectedCurrency(e.target.value)}
-            selectedItem={selectedCurrency}
+            onChange={(e) => set_Currency(e.target.value)}
+            selectedItem={picked_Currency}
           />
         </div>
       </div>
       <div className={styles.content}>
         <div className={styles.section}>
           <Card
-            cardData={selectedOrderDetails.executionDetails}
-            key={selectedOrderDetails["&key"]}
+            cardData={choose_OrderDetails.executionDetails}
+            key={choose_OrderDetails["&key"]}
             title="Selected Order Details"
           />
           <Card
-            cardData={selectedOrderTimeStamps.timestamps}
-            key={selectedOrderDetails["&key"]}
+            cardData={order_TimeStamps.timestamps}
+            key={choose_OrderDetails["&key"]}
             title="Selected Order Timestamps"
           />
         </div>
         <List
           handleOrderDetails={handleOrderDetails}
-          searchText={searchText}
+          searchText={search_data}
           rows={mockData.results}
           orderDetails={timestamps.results}
-          currency={selectedCurrency}
+          currency={picked_Currency}
         />
       </div>
     </div>
