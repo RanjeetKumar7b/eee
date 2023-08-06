@@ -24,6 +24,8 @@ filtering:--
             <ListRowCell>{orderDetails.find((order) => order["&id"] === row["&id"]).timestamps.orderSubmitted}</ListRowCell>
         ))}
         `}
+
+        
 Q.3->Order Volume cell is displaying USD values, can you please make it display the currency value selected on the dropdown located in the header of the dashboard
 
 
