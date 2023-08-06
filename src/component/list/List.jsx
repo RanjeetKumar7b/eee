@@ -5,7 +5,7 @@ import ListHeader from "./ListHeader";
 import ListHeaderCell from "./ListHeaderCell";
 import styles from "./List.module.css";
 const List = ({ rows, searchText, orderDetails, handleOrderDetails, currency }) => {
-  const filteredRows = searchText === '' ? rows : rows.filter((row) => row["&id"] === searchText);
+  const data_filter = searchText === '' ? rows : rows.filter((row) => row["&id"] === searchText);
   const handleClick = (selectedId) => {
     console.log("Row clicked with ID:", selectedId);
     handleOrderDetails(selectedId);
@@ -23,7 +23,7 @@ const List = ({ rows, searchText, orderDetails, handleOrderDetails, currency }) 
         </ListHeader>
       </thead>
       <tbody>
-        {filteredRows.map((row) => (
+        {data_filter.map((row) => (
           <ListRow key={row["&id"]} onClick={() => handleClick(row["&id"])}>
             <ListRowCell>{row["&id"]}</ListRowCell>
             <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
